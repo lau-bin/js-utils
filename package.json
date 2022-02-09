@@ -1,0 +1,16 @@
+{
+  "name": "@h4rdcoder/js-utils",
+  "version": "1.0.0",
+  "description": "Various js utilities",
+  "main": "out/index.js",
+  "scripts": {
+    "prepare": "tsc"
+  },
+  "type": "module",
+  "author": "Lautaro C",
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  },
+  "keywords": [],
+  "licence": "ISC"
+}
