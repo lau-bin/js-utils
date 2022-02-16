@@ -172,8 +172,16 @@ export function download(filename: string, text: string) {
 }
 
 // zzz
-export function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
+export async function sleep(ms: number, condition?: ()=>boolean, _steps?: number): Promise<void> {
+  let sleeptMs = 0
+  let steps = _steps || 100
+  while (sleeptMs < ms){
+    await new Promise(resolve => setTimeout(resolve, steps))
+    if (condition && condition() == false){
+      break
+    }
+    sleeptMs += steps
+  }
 }
 
 export interface Option<T> {
