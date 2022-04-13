@@ -6,7 +6,6 @@
   "scripts": {
     "prepare": "tsc"
   },
-  "type": "module",
   "author": "Lautaro C",
   "devDependencies": {
     "typescript": "^4.5.2"
