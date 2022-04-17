@@ -42,6 +42,13 @@ export const stringType = "string";
 
 export type Integer = number & Symbol
 
+export function makeEnumerable(obj: Object) {
+  return Object.fromEntries(
+    //@ts-ignore
+    Object.getOwnPropertyNames(obj).map(prop => [prop, obj[prop]])
+  )
+}
+
 export function JSONPrettify(json: Object | Array<any>, replacer: (key:any, value:any)=>any) {
   let result = JSON.stringify(json, replacer, 2);
   // let height = (result.match(/\n/g) || []).length;
