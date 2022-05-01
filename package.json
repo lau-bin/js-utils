@@ -4,7 +4,7 @@
   "description": "Various js utilities",
   "main": "out/index.js",
   "scripts": {
-    "prepare": "tsc"
+    "build": "npx tsc"
   },
   "author": "Lautaro C",
   "devDependencies": {
