@@ -1,16 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.readLine = exports.evalFromTerminal = void 0;
-const readline_1 = require("readline");
-async function evalFromTerminal(_this) {
+import { createInterface } from "readline";
+export async function evalFromTerminal(_this) {
     if (process.argv.length >= 2 && (process.argv[2] === "-i" || process.argv[2] === "-il")) {
         await run.call(_this);
     }
 }
-exports.evalFromTerminal = evalFromTerminal;
 async function run() {
     console.log("<Interactive mode>");
-    const rl = (0, readline_1.createInterface)({
+    const rl = createInterface({
         input: process.stdin,
         output: process.stdout
     });
@@ -30,8 +26,8 @@ async function run() {
     }
     console.log("<Console closed>");
 }
-async function readLine() {
-    const rl = (0, readline_1.createInterface)({
+export async function readLine() {
+    const rl = createInterface({
         input: process.stdin,
         output: process.stdout
     });
@@ -42,5 +38,4 @@ async function readLine() {
         });
     });
 }
-exports.readLine = readLine;
 //# sourceMappingURL=interactiveConsole.js.map
