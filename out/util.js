@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.isObject = exports.isString = exports.asConst = exports.whenAllComplete = exports.Queue = exports.sleep = exports.download = exports.createArray = exports.initArray = exports.jsonAnalyze = exports.syntaxHighlightTerminal = exports.syntaxHighlightWeb = exports.JSONPrettify = exports.makeEnumerable = exports.stringType = exports.assert = exports.unwrap = exports.hasProp = exports.hasValue = exports.isInteger = void 0;
-function isInteger(obj) {
+export function isInteger(obj) {
     if (obj % 1 > 0) {
         return false;
     }
@@ -9,8 +6,7 @@ function isInteger(obj) {
         return true;
     }
 }
-exports.isInteger = isInteger;
-function hasValue(obj) {
+export function hasValue(obj) {
     if (obj == null || obj === undefined) {
         return false;
     }
@@ -18,8 +14,7 @@ function hasValue(obj) {
         return true;
     }
 }
-exports.hasValue = hasValue;
-function hasProp(obj, prop) {
+export function hasProp(obj, prop) {
     for (let i = 0; i < prop.length; i++) {
         if (obj[prop[i]] === undefined) {
             return false;
@@ -27,8 +22,7 @@ function hasProp(obj, prop) {
     }
     return true;
 }
-exports.hasProp = hasProp;
-function unwrap(obj, message) {
+export function unwrap(obj, message) {
     if (hasValue(obj)) {
         return obj;
     }
@@ -36,27 +30,23 @@ function unwrap(obj, message) {
         throw new Error(message || "Value not present");
     }
 }
-exports.unwrap = unwrap;
-function assert(bool, msg) {
+export function assert(bool, msg) {
     if (!bool)
         throw new Error(msg);
 }
-exports.assert = assert;
-exports.stringType = "string";
-function makeEnumerable(obj) {
+export const stringType = "string";
+export function makeEnumerable(obj) {
     return Object.fromEntries(
     //@ts-ignore
     Object.getOwnPropertyNames(obj).map(prop => [prop, obj[prop]]));
 }
-exports.makeEnumerable = makeEnumerable;
-function JSONPrettify(json, replacer) {
+export function JSONPrettify(json, replacer) {
     let result = JSON.stringify(json, replacer, 2);
     // let height = (result.match(/\n/g) || []).length;
     result = result.replace(/: null/g, ": --").replace(/\"/g, "");
     return result;
 }
-exports.JSONPrettify = JSONPrettify;
-function syntaxHighlightWeb(json) {
+export function syntaxHighlightWeb(json) {
     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
         var cls = 'number';
@@ -77,8 +67,7 @@ function syntaxHighlightWeb(json) {
         return '<span class="' + cls + '">' + match + '</span>';
     });
 }
-exports.syntaxHighlightWeb = syntaxHighlightWeb;
-function syntaxHighlightTerminal(json) {
+export function syntaxHighlightTerminal(json) {
     if (typeof json !== 'string') {
         json = JSON.stringify(json, undefined, 2);
     }
@@ -101,8 +90,7 @@ function syntaxHighlightTerminal(json) {
         return cls + match + "\x1b[0m";
     });
 }
-exports.syntaxHighlightTerminal = syntaxHighlightTerminal;
-function jsonAnalyze(obj) {
+export function jsonAnalyze(obj) {
     let arr = [];
     analyzeJson(obj, null, arr);
     return logBeautifiedDotNotation(arr);
@@ -145,17 +133,15 @@ function jsonAnalyze(obj) {
         return retStr;
     }
 }
-exports.jsonAnalyze = jsonAnalyze;
 // export function jfor(times: number, func: (index?: number) => JSX.Element): Array<JSX.Element> {
 //   return ([...Array(times)].map((e, i) => func(i)));
 // }
-function initArray(arr, value) {
+export function initArray(arr, value) {
     for (let i = 0; i < arr.length; i++) {
         arr[i] = value;
     }
 }
-exports.initArray = initArray;
-function createArray(length) {
+export function createArray(length) {
     var arr = new Array(length || 0), i = length;
     if (arguments.length > 1) {
         var args = Array.prototype.slice.call(arguments, 1);
@@ -165,8 +151,7 @@ function createArray(length) {
     }
     return arr;
 }
-exports.createArray = createArray;
-function download(filename, text) {
+export function download(filename, text) {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
@@ -175,9 +160,8 @@ function download(filename, text) {
     element.click();
     document.body.removeChild(element);
 }
-exports.download = download;
 // zzz
-async function sleep(ms, condition, _steps) {
+export async function sleep(ms, condition, _steps) {
     let sleeptMs = 0;
     let steps = _steps || 100;
     while (sleeptMs < ms) {
@@ -188,11 +172,8 @@ async function sleep(ms, condition, _steps) {
         sleeptMs += steps;
     }
 }
-exports.sleep = sleep;
-class Queue {
-    constructor() {
-        this.storage = [];
-    }
+export class Queue {
+    storage = [];
     add(el) {
         this.storage.push(el);
     }
@@ -204,8 +185,7 @@ class Queue {
         return el;
     }
 }
-exports.Queue = Queue;
-function whenAllComplete(cant, fun, params) {
+export function whenAllComplete(cant, fun, params) {
     let counter = cant;
     return function (force) {
         counter--;
@@ -222,19 +202,15 @@ function whenAllComplete(cant, fun, params) {
         }
     };
 }
-exports.whenAllComplete = whenAllComplete;
-function asConst() {
+export function asConst() {
     return function (o) {
         return o;
     };
 }
-exports.asConst = asConst;
-function isString(obj) {
+export function isString(obj) {
     return (typeof obj == 'string') || (obj instanceof String);
 }
-exports.isString = isString;
-function isObject(obj) {
+export function isObject(obj) {
     return (typeof obj == 'object') || (obj instanceof Object);
 }
-exports.isObject = isObject;
 //# sourceMappingURL=util.js.map

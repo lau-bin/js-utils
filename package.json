@@ -3,6 +3,8 @@
   "version": "1.0.1",
   "description": "Various js utilities",
   "main": "out/index.js",
+  "sideEffects": false,
+  "type": "module",
   "scripts": {
     "build": "npx tsc"
   },

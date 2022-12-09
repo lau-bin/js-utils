@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "ESNext",
     "outDir": "out",
     "allowJs": true,
     "moduleResolution": "node",
@@ -9,10 +9,11 @@
     "removeComments": false,
     "preserveConstEnums": false,
     "sourceMap": true,
-    "target": "es2021",
+    "target": "ESNext",
     "experimentalDecorators": true,
     "baseUrl": "./",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": false,
     "strict": true,
     "alwaysStrict": true,
   }
