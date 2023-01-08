@@ -3,6 +3,10 @@
   "version": "1.0.1",
   "description": "Various js utilities",
   "main": "out/index.js",
+  "exports": {
+    "node": "./out/node.js",
+    "browser": "./out/browser.js"
+  },
   "sideEffects": false,
   "type": "module",
   "scripts": {
