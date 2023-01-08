@@ -5,7 +5,8 @@
   "main": "out/index.js",
   "exports": {
     "node": "./out/node.js",
-    "browser": "./out/browser.js"
+    "browser": "./out/browser.js",
+    "common": "./out/common.js"
   },
   "sideEffects": false,
   "type": "module",
